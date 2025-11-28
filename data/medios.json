@@ -1,0 +1,23 @@
+{
+    "whitelist": [
+        "biobiochile.cl",
+        "latercera.com",
+        "emol.com",
+        "24horas.cl",
+        "cooperativa.cl",
+        "t13.cl",
+        "meganoticias.cl",
+        "adnradio.cl",
+        "elmostrador.cl",
+        "ciperchile.cl",
+        "df.cl"
+    ],
+    "blacklist": [
+        "lalegal.cl",
+        "gamba.cl",
+        "elbaquedano.com"
+    ],
+    "satire": [
+        "lalegal.cl"
+    ]
+}
