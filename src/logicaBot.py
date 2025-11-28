@@ -3,6 +3,9 @@ import json
 import os
 from urllib.parse import urlparse
 from newspaper import Article, Config # IMPORTACIÓN NUEVA
+import json
+import os
+from datetime import datetime
 
 # --- MEMORIA CACHÉ (Variables Globales) ---
 CACHE_BLACKLIST_EXTERNA = set()
@@ -133,3 +136,39 @@ def analizar_contenido(url):
     except Exception as e:
         print(f"Error scraping: {e}")
         return resultado # Devuelve exito=False
+    
+
+
+#Guardar búsquedas previas del usuario para acceso rápido.
+
+HISTORIAL_ARCHIVO = "data/historial_usuarios.json"
+
+def guardar_en_historial(user_id, url, resultado):
+    """Guarda análisis en historial del usuario."""
+    historial = {}
+    
+    if os.path.exists(HISTORIAL_ARCHIVO):
+        with open(HISTORIAL_ARCHIVO, 'r') as f:
+            historial = json.load(f)
+    
+    if str(user_id) not in historial:
+        historial[str(user_id)] = []
+    
+    historial[str(user_id)].append({
+        "url": url,
+        "resultado": resultado,
+        "timestamp": datetime.now().isoformat()
+    })
+    
+    with open(HISTORIAL_ARCHIVO, 'w') as f:
+        json.dump(historial, f, indent=2)
+
+def obtener_historial(user_id, limite=5):
+    """Obtiene últimas búsquedas del usuario."""
+    if not os.path.exists(HISTORIAL_ARCHIVO):
+        return []
+    
+    with open(HISTORIAL_ARCHIVO, 'r') as f:
+        historial = json.load(f)
+    
+    return historial.get(str(user_id), [])[-limite:]
