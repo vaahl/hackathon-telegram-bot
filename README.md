@@ -21,7 +21,7 @@ Bot para analizar redirecciones de URLs y detectar enlaces potencialmente peligr
 
 ```powershell
 git clone https://github.com/vaahl/hackathon-telegram-bot
-cd C:\Users\danip\Desktop\Hackhaton\Fake\ New\hackathon-telegram-bot
+cd C:\Users\userpc\Desktop\hackathon-telegram-bot
 ```
 
 ### 2. Crear el entorno virtual
@@ -115,7 +115,7 @@ Qué muestra el bot:
 - Comprueba que la variable se llame exactamente `TELEGRAM_TOKEN`
 - Ejemplo correcto:
   ```
-  TELEGRAM_TOKEN=1234567890:ABCdefGHIjklmnoPQRstuvWXYZ
+  TELEGRAM_TOKEN="Token"
   ```
 
 ### Error: "No module named 'dotenv'"
